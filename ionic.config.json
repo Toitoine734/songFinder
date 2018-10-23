@@ -1,0 +1,7 @@
+{
+  "name": "songFinder",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
