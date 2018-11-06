@@ -1,0 +1,27 @@
+<ion-content padding>
+  <div style="margin-left: auto;margin-right: auto;width: 25em;">
+    <img style="width: 350px;height: 350px;" src="{{spotifyTrack.image}}">
+  </div>
+  <div style="text-align: center; padding-top: 50px">
+    <h3><strong>{{spotifyTrack.name}}</strong> - {{spotifyTrack.artist}}</h3>
+  </div>
+  <div style="margin-left: auto;margin-right: auto;width: 32em;">
+    <div style="float: left;">
+      <button ion-button round color="secondary" [disabled]="(!spotifyTrack['url'])" (click)="spotifyUrl()">Spotify</button>
+    </div>
+    <div style="float: left;">
+      <button ion-button round color="secondary" [disabled]="(!spotifyTrack['externes_url']['0'].itunes.itunesUrl)" (click)="itunesUrl()">Itunes</button>
+    </div>
+    <div style="float: left;">
+      <button ion-button round color="secondary" [disabled]="(!spotifyTrack['externes_url']['0'].youtube.youtubeUrl)" (click)="youtubeUrl()">Youtube</button>
+    </div>
+    <div style="float: left;">
+      <button ion-button round color="secondary" [disabled]="(!spotifyTrack['externes_url']['0'].deezer.deezerUrl)" (click)="deezerUrl()">Deezer</button>
+    </div>
+  </div>
+  <div style="margin-left: auto;margin-right: auto;width: 4em;margin-top: 6em;">
+    <button ion-button color="dark" clear icon-only (click)="goToIndex()">
+      <ion-icon name='refresh' is-active="false"></ion-icon>
+    </button>
+  </div>
+</ion-content>

@@ -1,14 +1,23 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-searchbar
+    [(ngModel)]="sSearchTrack"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="getItems($event)"
+    placeholder="Search a track">
+  </ion-searchbar>
+  <div *ngIf="tracks && tracks.length > 0; else noResults">
+    <a ion-item detail-none *ngFor="let track of tracks" (click)="goTOTrackPage(track)">
+      <div style="float: left;margin-top: 70px;">
+        <h3><strong>{{track.name}}</strong> - {{track.artist}}</h3>
+      </div>
+      <div style="float: right">
+        <img style="width: 150px;height: 150px;" src="{{track.image}}">
+      </div>
+    </a>
+  </div>
+  <ng-template #noResults>
+    <div style="text-align: center; padding-top: 100px">
+      <h1>No results</h1>
+    </div>
+  </ng-template>
 </ion-content>
