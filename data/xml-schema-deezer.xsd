@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="data"/>
+        <xs:element ref="total"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="track"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="track">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id"/>
+        <xs:element ref="readable"/>
+        <xs:element ref="title"/>
+        <xs:element ref="title_short"/>
+        <xs:element ref="title_version"/>
+        <xs:element ref="link"/>
+        <xs:element ref="duration"/>
+        <xs:element ref="rank"/>
+        <xs:element ref="explicit_lyrics"/>
+        <xs:element ref="preview"/>
+        <xs:element ref="artist"/>
+        <xs:element ref="album"/>
+        <xs:element ref="type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readable" type="xs:integer"/>
+  <xs:element name="title_short" type="xs:string"/>
+  <xs:element name="title_version">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="duration" type="xs:integer"/>
+  <xs:element name="rank" type="xs:integer"/>
+  <xs:element name="explicit_lyrics" type="xs:integer"/>
+  <xs:element name="preview" type="xs:anyURI"/>
+  <xs:element name="artist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id"/>
+        <xs:element ref="name"/>
+        <xs:element ref="link"/>
+        <xs:element ref="picture"/>
+        <xs:element ref="picture_small"/>
+        <xs:element ref="picture_medium"/>
+        <xs:element ref="picture_big"/>
+        <xs:element ref="picture_xl"/>
+        <xs:element ref="tracklist"/>
+        <xs:element ref="type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="picture" type="xs:anyURI"/>
+  <xs:element name="picture_small" type="xs:anyURI"/>
+  <xs:element name="picture_medium" type="xs:anyURI"/>
+  <xs:element name="picture_big" type="xs:anyURI"/>
+  <xs:element name="picture_xl" type="xs:anyURI"/>
+  <xs:element name="album">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id"/>
+        <xs:element ref="title"/>
+        <xs:element ref="cover"/>
+        <xs:element ref="cover_small"/>
+        <xs:element ref="cover_medium"/>
+        <xs:element ref="cover_big"/>
+        <xs:element ref="cover_xl"/>
+        <xs:element ref="tracklist"/>
+        <xs:element ref="type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cover">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cover_small">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cover_medium">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cover_big">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cover_xl">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="total" type="xs:integer"/>
+  <xs:element name="id" type="xs:integer"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="link" type="xs:anyURI"/>
+  <xs:element name="tracklist" type="xs:anyURI"/>
+  <xs:element name="type" type="xs:NCName"/>
+</xs:schema>

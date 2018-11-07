@@ -19,50 +19,6 @@ export class TrackPage {
     });
   }
 
-  obtainSpotifyAccessToken() {
-    return new Promise((resolve, reject) => {
-      let params = new URLSearchParams();
-      params.append('grant_type', 'client_credentials');
-      let options = {
-        headers: new HttpHeaders({
-          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-          'Authorization': 'Basic ' + btoa("c0029216bd4544f2b40c6d5953a6707e:b2edd33af8594ed194718b41e92a29fd")
-        }),
-      };
-
-      this.http.post('spotify-account/api/token', params.toString(), options)
-        .subscribe(
-          data => {
-            resolve(data);
-          },
-          err => {
-            reject('Invalid Credentials');
-          });
-    });
-  }
-
-  async spotifySearch(sSearch) {
-    let oToken: any = await this.obtainSpotifyAccessToken();
-    return new Promise((resolve, reject) => {
-      let options = {
-        headers: new HttpHeaders({
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + oToken.access_token,
-        }),
-      };
-
-      this.http.get('https://api.spotify.com/v1/search?q=' + sSearch + '&type=track', options)
-        .subscribe(
-          data => {
-            resolve(data);
-          },
-          err => {
-            reject('Error Search');
-          });
-    });
-  }
-
   async ItunesSearch() {;
     return new Promise((resolve, reject) => {
       this.http.get('https://itunes.apple.com/search?term=' + this.spotifyTrack['name'] + '+' + this.spotifyTrack['artist'])
