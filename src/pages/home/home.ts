@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {NavController, NavParams} from 'ionic-angular';
+import {Env} from '../../app/config'
 import {TrackPage} from '../track/track';
 
 @Component({
@@ -23,7 +24,7 @@ export class HomePage {
       let options = {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-          'Authorization': 'Basic ' + btoa("c0029216bd4544f2b40c6d5953a6707e:b2edd33af8594ed194718b41e92a29fd")
+          'Authorization': 'Basic ' + btoa(Env.spotify_client + ":" + Env.spotify_secret)
         }),
       };
 

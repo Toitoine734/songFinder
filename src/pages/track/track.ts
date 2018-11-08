@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {NavController, NavParams} from "ionic-angular";
 import {xml2json} from "xml-js";
+import {Env} from '../../app/config'
 import {HomePage} from '../home/home';
 
 @Component({
@@ -19,7 +20,7 @@ export class TrackPage {
     });
   }
 
-  async ItunesSearch() {;
+  async ItunesSearch() {
     return new Promise((resolve, reject) => {
       this.http.get('https://itunes.apple.com/search?term=' + this.spotifyTrack['name'] + '+' + this.spotifyTrack['artist'])
         .subscribe(
@@ -32,12 +33,9 @@ export class TrackPage {
     });
   }
 
-  async YoutubeSearch() {;
-
-    let youtubeToken = 'AIzaSyCvEZh-oz8CBw06u_-LNsujRRJMzbOK0iM'
-
+  async YoutubeSearch() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + this.spotifyTrack['name'] + '+' + this.spotifyTrack['artist'] + '&type=video&key=' + youtubeToken)
+      this.http.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + this.spotifyTrack['name'] + '+' + this.spotifyTrack['artist'] + '&type=video&key=' +Env.youtube_token)
         .subscribe(
           data => {
             resolve(data);
@@ -48,7 +46,7 @@ export class TrackPage {
     });
   }
 
-  async DeezerSearch() {;
+  async DeezerSearch() {
     return new Promise((resolve, reject) => {
       let headers = new HttpHeaders({
           'Accept': 'text',
@@ -96,8 +94,6 @@ export class TrackPage {
   }
 
   goToIndex() {
-    console.log(this.spotifyTrack['search']);
-
     this.navCtrl.push(HomePage, {
       search: this.spotifyTrack['search']
     });
