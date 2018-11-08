@@ -12,6 +12,10 @@ These instructions will get you a copy of the project up and running on your loc
   * nodeJS
   * docker
   
+  Configuration:  
+  
+  Create a config.ts file in src/app like the file src/app/config.ts.example to provide the api keys (Spotify and Youtube)
+  
 ### Installing  
   
 A step by step series of examples that tell you how to get a development env running  
@@ -36,8 +40,30 @@ npm start
   
   
 ## Deployment  
+
+Go to the project.
   
-Add additional notes about how to deploy this on a live system  
+```  
+cd songFinder/
+```  
+  
+Prepare the project
+  
+```  
+npm install  
+```  
+
+Launch the server
+  
+```  
+npm run build
+```  
+
+Launch the project in NginX
+
+```
+docker run -dit --name songFinder -v ./www:/usr/share/nginx/html -p 9991:80 nginx
+```
   
 ## Built With  
   
