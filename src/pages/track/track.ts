@@ -83,9 +83,9 @@ export class TrackPage {
         }
       ).catch(function (e) {});
       this.DeezerSearch().then((data: any) => {
-          if (data && data.total._cdata != "0") {
+          if (data && data.total._cdata > 0) {
             let items = data.data.track;
-            tmpTracks['0'].deezer = {'deezerUrl': items.link._cdata};
+            tmpTracks['0'].deezer = {'deezerUrl': items['0'].link._cdata};
           }
         }
       ).catch(function (e) {});
